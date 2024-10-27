@@ -1,34 +1,32 @@
-const { Pool } = require('pg')
+const {connect}=require("../helpers/connect");
+const {peliculas}=require("./queries");
 
-const {peliculas}=require("./queries")
 
-/**
- * Atributos de conexion necesarios para conectarse a la BBDD en postgre
- */
-const pool = new Pool({
-    host: 'localhost',
-    user: 'movieApi',
-    database: 'movieApi',
-    password: 'admin'
-})
-
-/**
- * Funcion de conexion a BBDD con postgre a la tabla de peliculas
- * ahora mismo, estamos haciendo la query de mostrar todas las peliculas
- */
-const connect = async()=>{
-    let client;
-    try{
-        client=await pool.connect();
-        const resp=await client.query(peliculas.getPeliculas);
-        console.log(resp.rows);
+const getAllPeliculas=async()=>{
+   try{
+        const respuesta=await connect(peliculas.getPeliculas,[])
+        console.log(respuesta,"en modelo")
+        return respuesta
     }catch(error){
-        throw error
-    }finally{
-        client.release()
+        console.log(error)
     }
+
 }
 
-module.exports={
-    connect
+const crearPeliculas=async(newPelicula)=>{
+    const {titulo,anio,director,genero,duracion,foto}=newPelicula
+   // obtener del controlador const body=req.body
+    //titulo,anio,director,genero,duracion,foto
+    try{
+         const respuesta=await connect(peliculas.crearPelicula,[titulo,anio,director,genero,duracion,foto])
+         console.log(respuesta,"get all peliculas ")
+         return respuesta
+     }catch(error){
+         console.log(error)
+     }
+ }
+
+ module.exports={
+    getAllPeliculas,
+    crearPeliculas
 }

@@ -1,27 +1,28 @@
 const peliculas ={
     getPeliculas:`
-        select * 
-        from peliculas 
-        ORDER BY pelicula_id ASC
-    `,
-    getPeliculasById:`
         SELECT * 
         FROM peliculas 
-        WHERE titulo Like 'Deadpool%';
+        ORDER BY pelicula_id ASC
+    `,
+    getPeliculasByTittle:`
+        SELECT * 
+        FROM peliculas 
+        WHERE titulo Like '%$1%';
     `,
     crearPelicula:`
-        INSERT INTO peliculas(pelicula_id,titulo,anio,director,genero,duracion,foto)
-        VALUES ('1','Gladiator','2000','Ridley Scott','Acción','155','https://pics.filmaffinity.com/Gladiator-331143379-large.jpg');
+        INSERT INTO peliculas(titulo,anio,director,genero,duracion,foto)
+        VALUES ($1,$2,$3,$4,$5,$6);
     `,
     actualizarPelicula:`
         UPDATE peliculas 
-        SET titulo='gladiator', director='El ridels'
-        where pelicula_id = 1;
+        SET titulo=$1,anio=$2,director=$3,genero=$4,duracion=$5,foto=$6
+        where pelicula_id = $7;
+        --[titulo,anio,director,genero,duracion,foto,pelicula_id]
     `,
     borrarPelicula:`
         Delete 
         FROM peliculas
-        WHERE pelicula_id=1;
+        WHERE pelicula_id=$1;
     `
 }
 

@@ -1,14 +1,13 @@
   --Tabla de Peliculas
   CREATE TABLE peliculas 
    (
-    pelicula_id int NOT NULL , 
+    pelicula_id SERIAL NOT NULL PRIMARY KEY, 
     titulo varchar(255), 
     anio int,
-	director varchar(50),
-	genero varchar(50),
-	duracion int,
-	foto text,
-    PRIMARY KEY (pelicula_id) 
+	  director varchar(50),
+	  genero varchar(50),
+	  duracion int,
+	  foto text,
   );
 
 --Inserccion Peliculas de Prueba
@@ -34,7 +33,7 @@ WHERE titulo Like 'Deadpool%';
 
 --Actualizar peliculas por su ID
 UPDATE peliculas 
-SET titulo='gladiator', director='El ridels'
+SET titulo='gladiator', director='El ridels', genero='Drama'
 where pelicula_id = 1;
 
 --Borrar peliculas por su ID
