@@ -2,7 +2,7 @@
   CREATE TABLE peliculas 
    (
     pelicula_id SERIAL NOT NULL PRIMARY KEY, 
-    titulo varchar(255), 
+    titulo varchar(255) UNIQUE, 
     anio int,
 	  director varchar(50),
 	  genero varchar(50),

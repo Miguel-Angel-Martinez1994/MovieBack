@@ -16,5 +16,5 @@ app.use("/api/v1/peliculas",require("./routes/moviesRoutes"))
 
 
 app.listen(port, () => {
-    console.log(`Servicor por el puerto ${port}`)
+    console.log(`Servidor por el puerto ${port}`)
 })

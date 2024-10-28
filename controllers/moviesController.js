@@ -1,12 +1,16 @@
-const {crearPeliculas,getAllPeliculas}=require("../models/movieModels");
+const 
+    {
+        crearPeliculas,
+        getAllPeliculas,
+        editarPelicula
+    }=require("../models/movieModels");
 
 
-
+// esto es /dashboard
 const getAllPeliculasController=async(req,res)=>{
     let respuesta;
     try{
-         respuesta=await getAllPeliculas()
-        console.log(respuesta,"en get peliculas")
+        respuesta=await getAllPeliculas()
         return res.status(200).json({
             msg:"mostrando peliculas",
             respuesta
@@ -18,13 +22,11 @@ const getAllPeliculasController=async(req,res)=>{
             
         })
     }
-   
 }
 
-
+// esto es /createMovie
 const crearPeliculaController=async(req,res)=>{
     let newPelicula=req.body
-    console.log(newPelicula)
     try{
         const result=await crearPeliculas(newPelicula)
         return res.status(200).json({
@@ -36,12 +38,54 @@ const crearPeliculaController=async(req,res)=>{
         console.log(error)
         return res.status(500).json({
             msg:" Error al crear peliculas"
-            
         })
     }
 }
 
+const getPeliculaByTittleController=async(req,res)=>{
+
+}
+
+const getDetallePeliculaController=async(req,res)=>{
+
+}
+
+const getPeliculasFavoritas=async(req,res)=>{
+
+}
+
+const editarPeliculaController=async(req,res)=>{
+    const {id}=req.params
+    let body=req.body
+    
+    const peliculaeditada={...body,id}
+    
+    try{
+        
+        const result=await editarPelicula(peliculaeditada)
+        return res.status(200).json({
+            ok:true,
+            msg:"editando pelicula",
+            result
+        })
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            msg:"Error al editar peliculas"
+        })
+    }
+}
+
+const borrarPeliculaController =async(req,res)=>{
+
+}
+
 module.exports={
     getAllPeliculasController,
-    crearPeliculaController
+    crearPeliculaController,
+    getPeliculaByTittleController,
+    getDetallePeliculaController,
+    getPeliculasFavoritas,
+    editarPeliculaController,
+    borrarPeliculaController
 }
