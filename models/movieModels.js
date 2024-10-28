@@ -31,7 +31,6 @@ const crearPeliculas=async(newPelicula)=>{
  }
 
  //PAGINA DE EDITAR PELICULA
-
  const editarPelicula=async(cambiarPelicula)=>{
     
     const {titulo,anio,director,genero,duracion,foto,id}=cambiarPelicula
@@ -44,8 +43,22 @@ const crearPeliculas=async(newPelicula)=>{
     }
  }
 
+ const borrarPelicula=async(id)=>{
+    try{
+        const respuesta=await connect(peliculas.borrarPelicula,[id])
+        return respuesta
+    }catch(error){
+        console.log(error)
+    }
+ }
+
+ const getPeliculasByTittle=async(req,res)=>{
+    
+ }
+
  module.exports={
     getAllPeliculas,
     crearPeliculas,
-    editarPelicula
+    editarPelicula,
+    borrarPelicula
 }

@@ -5,10 +5,10 @@ const { Pool } = require('pg')
  * Atributos de conexion necesarios para conectarse a la BBDD en postgre
  */
 const pool = new Pool({
-    host: process.env.host,
-    user: process.env.user,
-    database: process.env.database,
-    password: process.env.password
+    host: process.env.HOST,
+    user: process.env.USER,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD
 })
 
 /**

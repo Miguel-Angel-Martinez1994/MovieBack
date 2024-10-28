@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 app.use(cors())
 
-app.use("/api/v1/peliculas",require("./routes/moviesRoutes"))
+app.use("/api/v1/",require("./routes/moviesRoutes"))
 
 
 app.listen(port, () => {
