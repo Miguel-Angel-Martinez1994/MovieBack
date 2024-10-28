@@ -52,7 +52,14 @@ const crearPeliculas=async(newPelicula)=>{
     }
  }
 
- const getPeliculasByTittle=async(req,res)=>{
+ const peliculasByTittle=async(pelicula_data)=>{
+    const {titulo}=pelicula_data
+    try{
+        const respuesta=await connect(peliculas.getPeliculasByTittle,[titulo])
+        return respuesta
+    }catch(error){
+        console.log(error)
+    }
     
  }
 
@@ -60,5 +67,6 @@ const crearPeliculas=async(newPelicula)=>{
     getAllPeliculas,
     crearPeliculas,
     editarPelicula,
-    borrarPelicula
+    borrarPelicula,
+    peliculasByTittle
 }
