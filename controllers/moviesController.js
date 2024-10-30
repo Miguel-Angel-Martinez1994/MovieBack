@@ -12,6 +12,12 @@ const get_all_peliculas_controller=async(req,res)=>{
     let respuesta;
     try{
         respuesta=await getAllPeliculas()
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al ver peliculas",
+            })
+        }
         return res.status(200).json({
             msg:"mostrando peliculas",
             respuesta
@@ -30,6 +36,12 @@ const crear_pelicula_controller=async(req,res)=>{
     let newPelicula=req.body
     try{
         const result=await crearPeliculas(newPelicula)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al crear peliculas",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"creando peliculas ",
@@ -52,8 +64,13 @@ const editar_pelicula_controller=async(req,res)=>{
     const peliculaeditada={...body,id}
     
     try{
-        
         const result=await editarPelicula(peliculaeditada)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al editar peliculas",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"editando pelicula",
@@ -72,6 +89,12 @@ const borrar_Pelicula_controller =async(req,res)=>{
 
     try{
         const result=await borrarPelicula(id)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al borrar pelicula",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"pelicula borrada",

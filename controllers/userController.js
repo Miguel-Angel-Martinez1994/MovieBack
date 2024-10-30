@@ -9,6 +9,12 @@ const get_pelicula_by_tittle_controller=async(req,res)=>{
     let {titulo}=req.params
     try{
         const result=await peliculasByTittle(titulo)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al mostrar pelicula por titulo",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"mostrando pelicula",
@@ -25,8 +31,15 @@ const get_pelicula_by_tittle_controller=async(req,res)=>{
 
 const get_detalle_pelicula_controller=async(req,res)=>{
     let detallesPelicula=req.boby
+    //usuario_id   pelicula_id
     try{
         const result=await favoritoDetalles(detallesPelicula)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al mostrar detalles del favorito",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"mostrando favorito",
@@ -46,6 +59,12 @@ const get_peliculas_favoritas=async(req,res)=>{
 
     try{
         const result=await favoritosLista(identificador)
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al mostrar lista de favoritos",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"mostrando lista favoritos",

@@ -12,9 +12,9 @@ const
 const crear_usuario_controller=async(req,res)=>{
     let newUsuario=req.body
     //nombre,firebase_id,email,rol_id
-    const {nombre,firebase_id,email,rol_id}=newUsuario
+    const {firebase_id,email,rol_id}=newUsuario
     try{
-        const result=await crearUsuarioModel([nombre,firebase_id,email,rol_id])
+        const result=await crearUsuarioModel([firebase_id,email,rol_id])
         if(!result){
             return res.status(400).json({
                 ok:false,
@@ -39,9 +39,16 @@ const crear_usuario_controller=async(req,res)=>{
     //retornar objeto usuario
 
 const obtener_usuario_controller =async(req,res)=>{
-    let {email}=req.params
+    let obtenerUsuario=req.body
+    let {email}=obtenerUsuario
     try{
-        const result=await obtenerUsuarioModel(email)
+        const result=await obtenerUsuarioModel([email])
+        if(!result){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al mostrar usuario",
+            })
+        }
         return res.status(200).json({
             ok:true,
             msg:"mostrando usuario",
