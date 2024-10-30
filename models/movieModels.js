@@ -23,7 +23,6 @@ const crearPeliculas=async(newPelicula)=>{
     //titulo,anio,director,genero,duracion,foto
     try{
          const respuesta=await connect(peliculas.crearPelicula,[titulo,anio,director,genero,duracion,foto])
-        // console.log(respuesta,"get all peliculas ")
          return respuesta
      }catch(error){
          console.log(error)

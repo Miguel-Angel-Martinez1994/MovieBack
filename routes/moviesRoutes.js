@@ -3,23 +3,15 @@ const router= express.Router()
 const{
         getAllPeliculasController,
         crearPeliculaController,
-        getPeliculaByTittleController,
-        getDetallePeliculaController,
-        getPeliculasFavoritas,
         editarPeliculaController,
         borrarPeliculaController
     }=require("../controllers/moviesController")
 
-//LOGIN
-
-//vista de registrase en la APP de la aplicacion
-router.post("/signup")
-
-//vista de loggearse en la APP de la aplicacion
-router.post("/login")
-
-//vista de salirse de la aplicacion
-router.post("/logout")
+const{
+    getDetallePeliculaController,
+    getPeliculaByTittleController,
+    getPeliculasFavoritas
+}=require("../controllers/userController")
 
 
 
