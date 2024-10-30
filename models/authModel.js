@@ -5,7 +5,7 @@ const {usuarios}=require("./queries")
 //crearUsuario:`     obtenerUsuario:`
 
 const crearUsuarioModel=async(dataUsuario)=>{
-    const {nombre,firebase_id,email,rol_id}=dataUsuario
+    const [nombre,firebase_id,email,rol_id]=dataUsuario
     //nombre,firebase_id,email,rol_id
     try{
         const respuesta =await connect(usuarios.crearUsuario,[nombre,firebase_id,email,rol_id])

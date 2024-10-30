@@ -28,12 +28,12 @@ const peliculas ={
 const usuarios={
     crearUsuario:`
         INSERT INTO usuarios(nombre,firebase_id,email,rol_id)
-        VALUES('$1','$2','$3',(SELECT rol_id FROM roles WHERE rol_id=$4));
+        VALUES($1,$2,$3,(SELECT rol_id FROM roles WHERE rol_id=$4));
     `,
     obtenerUsuario:`
         SELECT * 
         FROM usuarios 
-        WHERE email= '$1' ;
+        WHERE email= $1 ;
     `
 }
 
