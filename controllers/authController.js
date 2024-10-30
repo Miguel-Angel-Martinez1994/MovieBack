@@ -9,7 +9,7 @@ const
     //recibe id de firebase, nombre de firebase y email
     //añadir el rol , que por defecto sera usuario
     //objeto(que es un registro) que almacena sera 
-const crearUsuarioController=async(req,res)=>{
+const crear_usuario_controller=async(req,res)=>{
     let newUsuario=req.body
     try{
         const result=await crearUsuarioModel(newUsuario)
@@ -30,7 +30,7 @@ const crearUsuarioController=async(req,res)=>{
 //obtener usuario
     //retornar objeto usuario
 
-const obtenerUsuarioController =async(req,res)=>{
+const obtener_usuario_controller =async(req,res)=>{
     let {email}=req.params
     try{
         const result=await obtenerUsuarioModel(email)
@@ -49,6 +49,6 @@ const obtenerUsuarioController =async(req,res)=>{
 
 
 module.exports={
-    crearUsuarioController,
-    obtenerUsuarioController
+    crear_usuario_controller,
+    obtener_usuario_controller
 }

@@ -8,7 +8,7 @@ const
 
 
 // esto es /dashboard
-const getAllPeliculasController=async(req,res)=>{
+const get_all_peliculas_controller=async(req,res)=>{
     let respuesta;
     try{
         respuesta=await getAllPeliculas()
@@ -26,7 +26,7 @@ const getAllPeliculasController=async(req,res)=>{
 }
 
 // esto es /createMovie
-const crearPeliculaController=async(req,res)=>{
+const crear_pelicula_controller=async(req,res)=>{
     let newPelicula=req.body
     try{
         const result=await crearPeliculas(newPelicula)
@@ -45,7 +45,7 @@ const crearPeliculaController=async(req,res)=>{
 
 
 
-const editarPeliculaController=async(req,res)=>{
+const editar_pelicula_controller=async(req,res)=>{
     const {id}=req.params
     let body=req.body
     
@@ -67,7 +67,7 @@ const editarPeliculaController=async(req,res)=>{
     }
 }
 
-const borrarPeliculaController =async(req,res)=>{
+const borrar_Pelicula_controller =async(req,res)=>{
     const {id}=req.params
 
     try{
@@ -86,8 +86,8 @@ const borrarPeliculaController =async(req,res)=>{
 }
 
 module.exports={
-    getAllPeliculasController,
-    crearPeliculaController,
-    editarPeliculaController,
-    borrarPeliculaController
+    borrar_Pelicula_controller,
+    crear_pelicula_controller,
+    editar_pelicula_controller,
+    get_all_peliculas_controller
 }

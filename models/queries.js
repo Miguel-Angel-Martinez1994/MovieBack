@@ -38,7 +38,35 @@ const usuarios={
 }
 
 const favoritos={
-
+    listaFavoritos:`
+        SELECT 
+            usuarios.nombre AS nombre_usuario,
+            peliculas.titulo AS titulo_pelicula
+        FROM favoritos
+        JOIN usuarios ON favoritos.usuario_id = usuarios.usuario_id
+        JOIN peliculas ON favoritos.pelicula_id = peliculas.pelicula_id
+        WHERE favoritos.usuario_id = $1
+        ORDER BY usuarios.nombre, peliculas.titulo;
+    `,
+    detallesFavorito:`
+        SELECT 
+            peliculas.pelicula_id,
+            peliculas.titulo AS titulo_pelicula,
+            peliculas.anio,
+            peliculas.director,
+            peliculas.genero,
+            peliculas.duracion
+        FROM favoritos
+        JOIN usuarios ON favoritos.usuario_id = usuarios.usuario_id
+        JOIN peliculas ON favoritos.pelicula_id = peliculas.pelicula_id
+        WHERE favoritos.usuario_id = $1 AND peliculas.pelicula_id=$2
+        ORDER BY peliculas.titulo;
+    `,
+    crearFavorito:`
+        INSERT INTO favoritos(usuario_id,pelicula_id)
+        VALUES
+        ((SELECT usuario_id FROM usuarios WHERE usuario_id=$1),(SELECT pelicula_id FROM peliculas WHERE pelicula_id=$2))
+    `
 }
 
 module.exports={

@@ -1,6 +1,6 @@
 const {peliculasByTittle}=require("../models/movieModels")
 
-const getPeliculaByTittleController=async(req,res)=>{
+const get_pelicula_by_tittle_controller=async(req,res)=>{
     let {titulo}=req.params
     try{
         const result=await peliculasByTittle(titulo)
@@ -18,17 +18,17 @@ const getPeliculaByTittleController=async(req,res)=>{
     
 }
 
-const getDetallePeliculaController=async(req,res)=>{
+const get_detalle_pelicula_controller=async(req,res)=>{
 
 }
 
-const getPeliculasFavoritas=async(req,res)=>{
+const get_peliculas_favoritas=async(req,res)=>{
 
 }
 
 
 module.exports={
-    getDetallePeliculaController,
-    getPeliculasFavoritas,
-    getPeliculaByTittleController
+    get_detalle_pelicula_controller,
+    get_peliculas_favoritas,
+    get_pelicula_by_tittle_controller
 }
